@@ -169,7 +169,7 @@ if __name__ == '__main__':
     # Third argument values [1,2]
     # 1: uses RESOLUCAO
     # 2: uses RESOLUCAO2
-    solve(G, B, 2)
+    solve(G, B, 1)
 
 
     print("SOLVED BOARD: ")
