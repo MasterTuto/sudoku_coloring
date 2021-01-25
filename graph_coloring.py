@@ -146,11 +146,10 @@ def print_sudoku(B): # where is is the sudoku board
       print("%s %s" % ('|' if j % 3 ==0 else '', B[(i, j)]), end=" ")
 
 def solve(G, B, algorithm):
+    L = sorted(get_colored_adjacents_number(G, B), key=lambda x: x[0], reverse=True) #only used at RESOLUCAO2
     run = [
         lambda: RESOLUCAO(G, B, [1,2,3,4,5,6,7,8,9], len(B.keys())),
-        lambda: RESOLUCAO2(G, L, [1,2,3,4,5,6,7,8,9], B, len(sorted(get_colored_adjacents_number(G, B), key=lambda x: x[0], reverse=True))),
-        # the fifth argument indicates the list L of priority, it's recommended to separate the content of len() function
-        # into a new variable
+        lambda: RESOLUCAO2(G, L, [1,2,3,4,5,6,7,8,9], B, len(L)),
     ]
 
     run[algorithm-1]()
@@ -170,7 +169,7 @@ if __name__ == '__main__':
     # Third argument values [1,2]
     # 1: uses RESOLUCAO
     # 2: uses RESOLUCAO2
-    solve(G, B, 1)
+    solve(G, B, 2)
 
 
     print("SOLVED BOARD: ")
